@@ -1,0 +1,5 @@
+How to reset password: You can reset your password using the employee portal’s Reset Password feature.
+How to check ticket status: Go to support portal and enter your ticket ID.
+VPN not working: Restart your VPN client or reconnect to the network.
+Forgot ID card: Contact administration office.
+Laptop slow: Restart system, clear cache, or contact IT.

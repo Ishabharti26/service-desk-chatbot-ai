@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Service Desk Chatbot</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+        #chatbox { width: 450px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        .msg { margin: 10px 0; }
+        .user { text-align: right; color: blue; }
+        .bot { text-align: left; color: green; }
+        input { width: 78%; padding: 8px; }
+        button { padding: 8px; }
+    </style>
+</head>
+<body>
+<div id="chatbox">
+    <h2>Service Desk Chatbot</h2>
+    <div id="messages"></div>
+    <input type="text" id="input" placeholder="Ask something..." />
+    <button onclick="sendMsg()">Send</button>
+</div>
+
+<script>
+function sendMsg() {
+    let text = document.getElementById("input").value;
+    document.getElementById("messages").innerHTML += `<div class='msg user'>${text}</div>`;
+    fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ msg: text })
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("messages").innerHTML += `<div class='msg bot'>${data.reply}</div>`;
+    });
+}
+</script>
+</body>
+</html>
